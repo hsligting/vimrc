@@ -1,0 +1,50 @@
+return {
+	{
+		"nvim-telescope/telescope.nvim",
+        branch = "master",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			local builtin = require("telescope.builtin")
+			vim.keymap.set("n", "<leader>ff", function()
+				builtin.find_files({ hidden = true })
+			end, {})
+			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+			vim.keymap.set("n", "<leader>fb", function()
+				builtin.buffers({ initial_mode = "normal" })
+			end, { desc = "Telescope buffers" })
+			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope diagnostics" })
+			vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Telescope definitions" })
+
+			local telescope = require("telescope")
+			local actions = require("telescope.actions")
+
+			telescope.setup({
+				pickers = {
+					buffers = {
+						mappings = {
+							n = { -- Normal mode mappings
+								["<C-d>"] = actions.delete_buffer, -- Bind Ctrl-d to delete the selected buffer
+							},
+							i = { -- Insert mode mappings (optional)
+								["<C-d>"] = actions.delete_buffer, -- Bind Ctrl-d in insert mode too
+							},
+						},
+					},
+				},
+			})
+		end,
+	},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		config = function()
+			require("telescope").setup({
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+				},
+			})
+			require("telescope").load_extension("ui-select")
+		end,
+	},
+}
