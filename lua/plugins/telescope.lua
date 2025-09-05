@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-        branch = "master",
+		branch = "master",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local builtin = require("telescope.builtin")
@@ -14,6 +14,9 @@ return {
 			end, { desc = "Telescope buffers" })
 			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope diagnostics" })
 			vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Telescope definitions" })
+			vim.keymap.set("n", "grr", function()
+				builtin.lsp_references({ initial_mode = "normal" })
+			end, { desc = "Telescope references" })
 
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
