@@ -1,0 +1,26 @@
+# Plugin manager data
+lazy-lock.json
+packer_compiled.lua
+.nvim/pack/*/start/*/plugin/packer_compiled.lua
+
+# Swap files
+*.swp
+*.swo
+
+# Session files
+Session.vim
+
+# Backup files
+*~
+*.bak
+
+# Telescope cache (if applicable)
+.telescope/
+
+# LSP related files (if applicable)
+.cache/nvim/lsp.log
+.cache/nvim/lsp_servers/
+
+# Other temporary files
+*.tmp
+.git
