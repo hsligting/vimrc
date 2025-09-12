@@ -6,7 +6,6 @@ vim.cmd("set number relativenumber")
 vim.cmd("set cursorline")
 vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
-
 vim.o.winborder = "rounded"
 vim.opt.updatetime = 1000
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
